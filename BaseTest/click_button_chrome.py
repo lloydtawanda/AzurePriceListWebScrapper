@@ -20,14 +20,10 @@ if __name__ == "__main__":
     if not args.driver:
         print("Please enter a valid path to the chrome driver ( --driver argument )")
         sys.exit(1)
-        
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
     
-    browser = webdriver.Chrome(executable_path=args.driver, chrome_options=chrome_options)
+    browser = webdriver.Chrome(executable_path=args.driver)
     browser.implicitly_wait(10)
+    browser.maximize_window()
     
     try:
         browser.get('https://www.oursky.com/')
